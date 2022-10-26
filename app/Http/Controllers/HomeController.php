@@ -22,7 +22,7 @@ class HomeController extends Controller
     {
         $anio = date('Y');
         $eventos = Eventos::where('anio',$anio)->orderBy('fecha')->get();
-        $fechas =  Eventos::select('fecha')->distinct()->get();
+        $fechas =  Eventos::select('fecha')->orderBy('fecha')->distinct()->get();
         return view('home',compact('eventos','fechas'));
     }
 }
