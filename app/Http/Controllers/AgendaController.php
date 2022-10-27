@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Agenda;
 use App\Models\Eventos;
+use App\Models\Mi_agenda;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AgendaController extends Controller
 {
@@ -77,6 +79,28 @@ class AgendaController extends Controller
             return view('agenda.contenido',compact('dia','eventos'))->render();
         }
     }
+
+    public function add_agenda($id){
+        Mi_agenda::create([
+            'id_usuario' => Auth::user()->id,
+            'id_evento' => $id,
+        ]);
+        return redirect()->route('home');
+    }
+
+    public function delete_agenda($id){
+        $evento = Mi_agenda::find($id);
+        $evento->delete();
+        return redirect()->route('miagenda')->with([
+            'message'=>'Se elimino corractamente'
+        ]);
+    }
+
+    public function mi_agenda(){
+        $agenda = Mi_agenda::with('user','evento')->where('id_usuario',Auth::user()->id)->get();
+        return view('mi_agenda.agenda',compact('agenda'));
+    }
+
     public function destroy($id){
         return "destroy";
         return $id;

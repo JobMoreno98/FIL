@@ -34,3 +34,8 @@ Route::resource('areas','\App\Http\Controllers\EventosController')->middleware('
 Route::get('lista-agendas',[App\Http\Controllers\AgendaController::class, 'agenda'])->name('lista-agendas');
 
 Route::get('/dia',[AgendaController::class,'eventos_dia'])->name('buscar.dia');
+
+Route::get('/añadir-agenda/{id}',[AgendaController::class,'add_agenda'])->name('añadir-agenda');
+Route::get('/elimninar-agenda/{id}',[AgendaController::class,'delete_agenda'])->name('elimninar-agenda');
+
+Route::get('/miagenda',[AgendaController::class,'mi_agenda'])->name('miagenda')->middleware('auth');
