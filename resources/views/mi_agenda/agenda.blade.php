@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@if (isset(session('message')))
+@if (session('message'))
     {{session('message')}}
 @endif
     <div class="container">
@@ -32,8 +32,7 @@
                                     <p class="text-end align-middle">
                                         <small class="text-dark">
                                             <b>Hora Inicio: </b> {{ $item->evento->hora_inicio }} 
-                                            <b>Hora Fin: </b> {{ $item->evento->hora_fin }} 
-                                            
+                                            <b>Hora Fin: </b> {{ $item->evento->hora_fin }}                                             
                                         </small>                                        
                                     </p>
                                   </div>

@@ -21,17 +21,25 @@
                         <div class="row justify-content-center">
                             <div class="col-sm-11">
                                 <div class="card-footer text-muted border-0">
-                                    <p class="text-end">
-                                        <a href="{{route('añadir-agenda',$item->id)}}" class="text-end"><i class="fas fa-plus"></i> Añadir agenda</a>
-                                    </p>
+                                    @if (Auth::check())
+                                        <p class="text-end">
+                                            <a href="{{ route('añadir-agenda', $item->id) }}" class="text-end"><i
+                                                    class="fas fa-plus"></i> Añadir agenda</a>
+                                        </p>
+                                    @else
+                                        <p class="text-end">
+                                            <a onclick="no_login()" @disabled(true)
+                                                class="text-end text-muted"><i class="fas fa-plus"></i> Añadir
+                                                agenda</a>
+                                        </p>
+                                    @endif
                                     <p class="text-end align-middle">
                                         <small class="text-dark">
-                                            <b>Hora Inicio: </b> {{ $item->hora_inicio }} 
-                                            <b>Hora Fin: </b> {{ $item->hora_fin }} 
-                                            
-                                        </small>                                        
+                                            <b>Hora Inicio: </b> {{ $item->hora_inicio }}
+                                            <b>Hora Fin: </b> {{ $item->hora_fin }}
+                                        </small>
                                     </p>
-                                  </div>
+                                </div>
                             </div>
 
                         </div>

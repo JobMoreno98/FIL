@@ -20,8 +20,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $anio = date('Y');
-        $eventos = Eventos::where('anio',$anio)->orderBy('fecha')->get();
+        $eventos = Eventos::where('anio',date('Y'))->orderBy('fecha')->get();
         $fechas =  Eventos::select('fecha')->orderBy('fecha')->distinct()->get();
         return view('home',compact('eventos','fechas'));
     }

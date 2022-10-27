@@ -28,7 +28,6 @@
 
         <hr>
     </div>
-
     <div class="container">
         <div class="row" id="contenidos">
 
@@ -109,6 +108,14 @@
             });
 
             document.getElementById('organiza').textContent = element.organiza;
+        }
+    </script>
+    <script>
+        function no_login() {
+            $.alert({
+                title: 'Iniciar sesión!',
+                content: 'Favor de volver a intentarlo',
+            });
         }
     </script>
 @endsection
