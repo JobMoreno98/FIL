@@ -15,9 +15,12 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('inicio') }}">Inicio</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('agenda.index') }}">Administración</a>
-                    </li>
+                    @if (Auth::check() && Auth::user()->role == 'admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('agenda.index') }}">Administración</a>
+                        </li>
+                    @endif
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('miagenda') }}">Mi Agenda</a>
                     </li>
