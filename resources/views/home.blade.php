@@ -113,8 +113,8 @@
     <script>
         function no_login() {
             $.alert({
-                title: 'Iniciar sesión!',
-                content: 'Favor de volver a intentarlo',
+                title: 'Iniciar sesión',
+                content: 'Para añadir a <b> Mi Agenda </b> debes de iniciar sesión primero',
             });
         }
     </script>

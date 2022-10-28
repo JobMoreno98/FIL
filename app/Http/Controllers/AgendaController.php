@@ -67,15 +67,13 @@ class AgendaController extends Controller
 
     public function eventos_dia(Request $request)
     {
-        
         if ($request->ajax()){
             $anio = date('Y');
-            $eventos = Eventos::where('anio',$anio)->where('fecha',$request->dia)->get();
+            $eventos = Eventos::with('miagenda')->where('anio',$anio)->where('fecha',$request->dia)->get();
             $fecha = str_replace('/', '-', $request->dia);
-            $newDate = date('d-m-Y', strtotime($fecha));
-            
+            $newDate = date('d-m-Y', strtotime($fecha));            
             $dia = strftime('%d', strtotime($newDate));
-            $mes = strftime('%B', strtotime($newDate));
+
             return view('agenda.contenido',compact('dia','eventos'))->render();
         }
     }

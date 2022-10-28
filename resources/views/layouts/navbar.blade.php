@@ -14,6 +14,9 @@
                         <a class="nav-link" aria-current="page" href="{{ route('agenda.index') }}">Administrar</a>
                     </li>
                 @endif
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{ route('miagenda') }}">Mi Agenda</a>
+                </li>
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
