@@ -25,7 +25,6 @@
                 </tr>
             </table>
         </div>
-
         <hr>
     </div>
     <div class="container">

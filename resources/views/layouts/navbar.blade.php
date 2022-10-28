@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md bg-light">
-    <div class="container-fluid">
+    <div class="container">
         <a class="navbar-brand" href="{{ route('inicio') }}">FIL</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar">
