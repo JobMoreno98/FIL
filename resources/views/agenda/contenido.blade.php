@@ -23,7 +23,7 @@
                                     @if (Auth::check())
                                         @if (isset($item->miagenda[0]) && $item->miagenda[0]->id_usuario == Auth::user()->id)                                            
                                             <p class="text-end">
-                                                <a href="{{ route('elimninar-agenda', $item->id) }}"
+                                                <a href="{{ route('elimninar-agenda', $item->miagenda[0]->id) }}"
                                                     class="text-end text-danger"><i class="fas fa-plus"></i> Eliminar de
                                                     la agenda</a>
                                             </p>
