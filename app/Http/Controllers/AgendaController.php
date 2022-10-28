@@ -17,6 +17,7 @@ class AgendaController extends Controller
 
     public function show($id){
         $agenda = Agenda::where('id',$id);
+        return $agenda;
     }
     
     public function agenda(){
@@ -73,7 +74,6 @@ class AgendaController extends Controller
             $fecha = str_replace('/', '-', $request->dia);
             $newDate = date('d-m-Y', strtotime($fecha));            
             $dia = strftime('%d', strtotime($newDate));
-
             return view('agenda.contenido',compact('dia','eventos'))->render();
         }
     }

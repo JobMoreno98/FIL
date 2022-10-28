@@ -19,17 +19,18 @@
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-sm-11">
-                                <div class="card-footer text-muted border-0">
+                                <div class="card-footer mt-auto text-muted border-0">
                                     @if (Auth::check())
-                                        @if ($item->miagenda[0]->id_usuario != Auth::user()->id)
+                                        @if (isset($item->miagenda[0]) && $item->miagenda[0]->id_usuario == Auth::user()->id)                                            
                                             <p class="text-end">
-                                                <a href="{{ route('añadir-agenda', $item->id) }}" class="text-end"><i
-                                                        class="fas fa-plus"></i> Añadir Mi agenda</a>
+                                                <a href="{{ route('elimninar-agenda', $item->id) }}"
+                                                    class="text-end text-danger"><i class="fas fa-plus"></i> Eliminar de
+                                                    la agenda</a>
                                             </p>
                                         @else
                                             <p class="text-end">
-                                                <a href="{{ route('elimninar-agenda', $item->miagenda[0]->id) }}"
-                                                    class="text-end text-danger"><i class="fas fa-plus"></i> Eliminar de la agenda</a>
+                                                <a href="{{ route('añadir-agenda', $item->id) }}" class="text-end"><i
+                                                        class="fas fa-plus"></i> Añadir Mi agenda</a>
                                             </p>
                                         @endif
                                     @else
