@@ -12,7 +12,8 @@
                                     <h5 class="card-title"></h5>
                                     <p class="card-text text-start fs-5">{{ $item->nombre }}</p>
                                     <p class="card-text text-dark">
-                                        <b>Organiza:</b> {{ $item->organiza }}
+                                        <b>Organiza:</b> {{ $item->organiza }} <br>
+                                        <b>Categoria :</b> {{ $item->categoria }}
                                     </p>
                                 </div>
                             </div>

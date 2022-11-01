@@ -41,10 +41,10 @@
                     <h1 class="modal-title fs-5" id="titulo"></h1>
                 </div>
                 <div class="modal-body">
-                    <p>Organiza: <span id="organiza"></span></p>
+                    <p class="fs-bold    ">Organiza: <span id="organiza"></span></p>
                     <p>Coordinador: <span id="coordinador"></span></p>
                     <p>Autor: <span id="autor"></span></p>
-
+                    <p>Categoria: <span id="categoria"></span></p>
                     <p>Salón: <span id="salon"></span></p>
                     <p>Participantes
                     <ul id="participantes">
@@ -104,6 +104,7 @@
                 });
             }
             document.getElementById('autor').textContent = element.autor;
+            document.getElementById('categoria').textContent = element.categoria;
             document.getElementById('titulo').textContent = element.nombre;
             document.getElementById('organiza').textContent = element.organiza;
             document.getElementById('coordinador').textContent = element.coordinador;
