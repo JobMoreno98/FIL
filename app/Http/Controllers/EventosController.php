@@ -36,7 +36,8 @@ class EventosController extends Controller
             'area' => 'required',
             'hora_inicio' => 'required',
             'hora_fin' => 'required',
-            'fecha'=> 'required'
+            'fecha'=> 'required',
+            'categoria'=> 'required'
         ]);
 
 
@@ -45,6 +46,7 @@ class EventosController extends Controller
 
         $evento->anio = date('Y');
         $evento->nombre = $request->nombre;
+        $evento->categoria = $request->categoria;
         $evento->participantes = $request->participantes;
         $evento->autor = $request->autor;
         $evento->coordinador = $request->coordinadores;

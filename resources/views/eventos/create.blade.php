@@ -39,6 +39,15 @@
                             <label class="form-label" for="coordinadores">Coordinadores</label>
                             <textarea class="form-control" placeholder="Coordinadores" name="coordinadores" id="coordinadores">{{ old('coordinadores') }}</textarea>
                         </div>
+                        <div class="col-sm-12 col-md-7">
+                            <label for="categoria" class="form-label">Selecciona una categoria</label>
+                            <select class="form-control" name="categoria" id="categoria">
+                                <option disabled selected>Selecciona una opción</option>
+                                <option value="FIL Pensamiento">FIL Pensamiento</option>
+                                <option value="Presentación de Libros">Presentación de Libros</option>
+                                <option value="FIL en CUCSH">FIL en CUCSH</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-sm-12 col-md-7">

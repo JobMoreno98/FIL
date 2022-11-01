@@ -39,11 +39,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="titulo"></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p>Organiza: <span id="organiza"></span></p>
                     <p>Coordinador: <span id="coordinador"></span></p>
+                    <p>Autor: <span id="autor"></span></p>
 
                     <p>Salón: <span id="salon"></span></p>
                     <p>Participantes
@@ -94,17 +94,21 @@
         }
 
         function modal(element) {
-            let part = element.participantes.split(',');
+            console.log(element);
+            if (element.hasOwnProperty('participantes') && element.participantes != null) {
+                let part = element.participantes.split(',');
+                let participantes = document.getElementById('participantes');
+                participantes.innerHTML = "";
+                part.forEach(item => {
+                    participantes.innerHTML += "<li> " + item + "</li>";
+                });
+            }
+            document.getElementById('autor').textContent = element.autor;
             document.getElementById('titulo').textContent = element.nombre;
             document.getElementById('organiza').textContent = element.organiza;
             document.getElementById('coordinador').textContent = element.coordinador;
             document.getElementById('salon').textContent = element.salon;
 
-            let participantes = document.getElementById('participantes');
-            participantes.innerHTML = "";
-            part.forEach(item => {
-                participantes.innerHTML += "<li> " + item + "</li>";
-            });
 
             document.getElementById('organiza').textContent = element.organiza;
         }
