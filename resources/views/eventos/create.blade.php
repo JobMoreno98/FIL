@@ -55,7 +55,7 @@
                             <input class="form-control" type="text" name="organiza" id="organiza">
                         </div>
                         <div class="col-sm-12 col-md-7">
-                            <label class="form-label" for="area">Área</label>
+                            <label class="form-label" for="area">Salón</label>
                             <input class="form-control" type="text" name="area" id="area">
                         </div>
 
