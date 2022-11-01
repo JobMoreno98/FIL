@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\EventosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,4 @@ Route::get('/añadir-agenda/{id}',[AgendaController::class,'add_agenda'])->name(
 Route::get('/elimninar-agenda/{id}',[AgendaController::class,'delete_agenda'])->name('elimninar-agenda');
 
 Route::get('/miagenda',[AgendaController::class,'mi_agenda'])->name('miagenda')->middleware('auth');
+Route::get('/eventos/{id}/delete',[EventosController::class,'eventos_delete'])->name('eventos.delete')->middleware('auth');

@@ -29,14 +29,14 @@
                                             </p>
                                         @else
                                             <p class="text-end">
-                                                <a href="{{ route('añadir-agenda', $item->id) }}" class="text-end"><i
+                                                <a href="{{ route('añadir-agenda', $item->id) }}" class="text-end border-bottom p-2"><i
                                                         class="fas fa-plus"></i> Añadir Mi agenda</a>
                                             </p>
                                         @endif
                                     @else
                                         <p class="text-end">
                                             <a onclick="no_login()" @disabled(true)
-                                                class="text-end text-muted"><i class="fas fa-plus"></i> Añadir Mi
+                                                class="text-end text-muted  border-bottom p-2"><i class="fas fa-plus"></i> Añadir Mi
                                                 agenda</a>
                                         </p>
                                     @endif

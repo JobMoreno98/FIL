@@ -62,4 +62,13 @@ class EventosController extends Controller
             'message' => 'Se registro correctamente el evento',
         ]);
     }
+    public function eventos_delete($id){
+        $evento = Eventos::find($id);
+        $evento->delete();
+        
+        return redirect()->route('miagenda')->with([
+            'message' => 'Se elimino correctamente el evento',
+        ]);
+        
+    }
 }
