@@ -3,7 +3,7 @@
 @section('content')
     @php
         date_default_timezone_set('America/Mexico_City');
-        setlocale(LC_TIME, 'spanish');
+        setlocale(LC_TIME, 'es_MX.utf8');
         $dia_actual = date('Y-m-d');
     @endphp
     <div class="container" onload="logKey({{ $dia_actual }})">
@@ -12,7 +12,7 @@
                 <tr>
                     <div class="row justify-content-center">
                         @foreach ($fechas as $item)
-                            <td class="col text-center border shadow-sm m-1 p-1" onclick="logKey('{{ $item->fecha }}')">
+                            <td class="col text-center border shadow-sm m-1 p-3" onclick="logKey('{{ $item->fecha }}')">
                                 @php
                                     $fecha = str_replace('/', '-', $item->fecha);
                                     $newDate = date('d-m-Y', strtotime($fecha));
@@ -32,8 +32,8 @@
 
         </div>
     </div>
-    <!-- Modal con la informacion-->
 
+    <!-- Modal con la informacion-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -41,17 +41,22 @@
                     <h1 class="modal-title fs-5" id="titulo"></h1>
                 </div>
                 <div class="modal-body">
-                    <p class="fs-bold    ">Organiza: <span id="organiza"></span></p>
-                    <p>Coordinador: <span id="coordinador"></span></p>
-                    <p>Autor: <span id="autor"></span></p>
+                    <div id="Pensamiento" style="display: block">
+                        <p class="fs-bold    ">Organiza: <span id="organiza"></span></p>
+                        <p>Coordinador: <span id="coordinador"></span></p>
+                    </div>
+                    <div id="Libro" style="display: block">
+                        <p>Autor: <span id="autor"></span></p>
+                    </div>
                     <p>Categoria: <span id="categoria"></span></p>
                     <p>Salón: <span id="salon"></span></p>
-                    <p>Participantes
-                    <ul id="participantes">
+                    <div id="Pensamiento">
+                        <p>Participantes
+                        <ul id="participantes">
 
-                    </ul>
+                        </ul>
+                    </div>
                     </p>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -105,6 +110,14 @@
             }
             document.getElementById('autor').textContent = element.autor;
             document.getElementById('categoria').textContent = element.categoria;
+            if(element.categoria != 'FIL Pensamiento' && element.categoria != 'FIL en CUCSH'){
+                document.getElementById('Pensamiento').style.display = 'none';
+                document.getElementById('Libro').style.display = 'block';
+
+            }else{
+                document.getElementById('Pensamiento').style.display = 'block';
+                document.getElementById('Libro').style.display = 'none';
+            }
             document.getElementById('titulo').textContent = element.nombre;
             document.getElementById('organiza').textContent = element.organiza;
             document.getElementById('coordinador').textContent = element.coordinador;
@@ -118,7 +131,7 @@
         function no_login() {
             $.alert({
                 title: 'Iniciar sesión',
-                content: 'Para añadir a <b> Mi Agenda </b> debes de iniciar sesión primero',
+                content: 'Para añadir a <b> Mi Agenda </b> debes de iniciar sesión primero <a href="{{route("login")}}" >Registrarme</a>',
             });
         }
     </script>

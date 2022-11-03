@@ -1,36 +1,40 @@
-<nav class="navbar navbar-expand-md bg-light">
+<nav class="navbar  navbar-expand-md " style="background: #072d45;">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('inicio') }}">FIL</a>
+        <a href="" class="navbar-brand">
+            <img style="width: 100px" class="img-fluid" src="{{asset('img/cucsh.png')}}" alt="">
+        </a>
+        
+        <a class="navbar-brand text-white" href="{{ route('inicio') }}">FIL Pensamiento</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel"  style="background: #072d45;">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">FIL</h5>
+                <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">FIL</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ route('inicio') }}">Inicio</a>
+                        <a class="nav-link text-white" aria-current="page" href="{{ route('inicio') }}">Inicio</a>
                     </li>
                     @if (Auth::check() && Auth::user()->role == 'admin')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('agenda.index') }}">Administración</a>
+                            <a class="nav-link text-white" href="{{ route('agenda.index') }}">Administración</a>
                         </li>
                     @endif
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('miagenda') }}">Mi Agenda</a>
+                        <a class="nav-link text-white" href="{{ route('miagenda') }}">Mi Agenda</a>
                     </li>
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Acceder') }}</a>
+                            <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Acceder') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
+                            <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                         </li>
                     @else
                         <li class="nav-item dropdown">

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-3">
         <div class="row">
-            <h1 class="text-center">Hola, bienvenido a Agenda FIL 2022</h1>
+            <h1 class="text-center">FIL Pensamiento</h1>
         </div>
         <hr>
         <div class="row justify-content-center">
