@@ -74,7 +74,8 @@ class AgendaController extends Controller
             $fecha = str_replace('/', '-', $request->dia);
             $newDate = date('d-m-Y', strtotime($fecha));            
             $dia = strftime('%d', strtotime($newDate));
-            return view('agenda.contenido',compact('dia','eventos'))->render();
+            $mes = strftime('%B', strtotime($newDate));
+            return view('agenda.contenido',compact('dia','mes','eventos'))->render();
         }
     }
 

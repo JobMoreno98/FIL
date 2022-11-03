@@ -14,7 +14,7 @@
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel"
             style="background: #072d45;">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title text-white " id="offcanvasNavbarLabel">FIL</h5>
+                <h5 class="offcanvas-title text-white " id="offcanvasNavbarLabel">FIL Pensamiento</h5>
                 <button type="button" class="btn-close bg-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">

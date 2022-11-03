@@ -1,4 +1,4 @@
-<h1 class="text-center">Eventos del día {{ $dia }}</h1>
+<h2 class="text-center">Eventos del día {{ $dia }} de {{$mes}}</h2>
 <div class="container">
     <div class="row justify-content-center">
         @foreach ($eventos as $item)
