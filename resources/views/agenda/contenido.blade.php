@@ -1,4 +1,4 @@
-<h2 class="text-center">Eventos del día {{ $dia }} de {{$mes}}</h2>
+<h2 class="text-center">Eventos del día {{ $dia }} de {{ strtoupper($mes) }}</h2>
 <div class="container">
     <div class="row justify-content-center">
         @foreach ($eventos as $item)
@@ -22,7 +22,7 @@
                             <div class="col-sm-11">
                                 <div class="card-footer mt-auto text-muted border-0">
                                     @if (Auth::check())
-                                        @if (isset($item->miagenda[0]) && $item->miagenda[0]->id_usuario == Auth::user()->id)                                            
+                                        @if (isset($item->miagenda[0]) && $item->miagenda[0]->id_usuario == Auth::user()->id)
                                             <p class="text-end">
                                                 <a href="{{ route('elimninar-agenda', $item->miagenda[0]->id) }}"
                                                     class="text-end text-danger"><i class="fas fa-plus"></i> Eliminar de
@@ -30,14 +30,16 @@
                                             </p>
                                         @else
                                             <p class="text-end">
-                                                <a href="{{ route('añadir-agenda', $item->id) }}" class="text-end border-bottom p-2"><i
-                                                        class="fas fa-plus"></i> Añadir Mi agenda</a>
+                                                <a href="{{ route('añadir-agenda', $item->id) }}"
+                                                    class="text-end border-bottom p-2"><i class="fas fa-plus"></i>
+                                                    Añadir Mi agenda</a>
                                             </p>
                                         @endif
                                     @else
                                         <p class="text-end">
                                             <a onclick="no_login()" @disabled(true)
-                                                class="text-end text-muted  border-bottom p-2"><i class="fas fa-plus"></i> Añadir Mi
+                                                class="text-end text-muted  border-bottom p-2"><i
+                                                    class="fas fa-plus"></i> Añadir Mi
                                                 agenda</a>
                                         </p>
                                     @endif
