@@ -1,18 +1,21 @@
-<nav class="navbar  navbar-expand-md " style="background: #072d45;">
+<nav class="navbar navbar-expand-md  navbar-dark" style="background: #072d45;">
     <div class="container">
-        <a href="" class="navbar-brand">
-            <img style="width: 100px" class="img-fluid" src="{{asset('img/cucsh.png')}}" alt="">
+        <a href="http://www.cucsh.udg.mx/" class="navbar-brand">
+            <img style="width: 100px" class="img-fluid" src="{{ asset('img/cucsh.png') }}" alt="">
         </a>
-        
+
         <a class="navbar-brand text-white" href="{{ route('inicio') }}">FIL Pensamiento</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar">
-            <span class="navbar-toggler-icon"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+              </svg>
         </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel"  style="background: #072d45;">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel"
+            style="background: #072d45;">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">FIL</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <h5 class="offcanvas-title text-white " id="offcanvasNavbarLabel">FIL</h5>
+                <button type="button" class="btn-close bg-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
