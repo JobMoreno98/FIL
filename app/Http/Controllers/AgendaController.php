@@ -71,7 +71,7 @@ class AgendaController extends Controller
         if ($request->ajax()){
             setlocale(LC_TIME, 'es_MX.utf8');
             $anio = date('Y');
-            $eventos = Eventos::with('miagenda')->where('anio',$anio)->where('fecha',$request->dia)->get();
+            $eventos = Eventos::with('miagenda')->where('anio',$anio)->where('fecha',$request->dia)->orderBy('hora_inicio')->get();
             $fecha = str_replace('/', '-', $request->dia);
             $newDate = date('d-m-Y', strtotime($fecha));            
             $dia = strftime('%d', strtotime($newDate));

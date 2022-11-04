@@ -47,6 +47,7 @@
                     </div>
                     <div id="Libro" style="display: block">
                         <p>Autor: <span id="autor"></span></p>
+                        <p>Presentadores: <span id="presentadores"></span></p>
                     </div>
                     <p>Categoria: <span id="categoria"></span></p>
                     <p>Salón: <span id="salon"></span></p>
@@ -93,7 +94,7 @@
                 data: {
                     dia: fecha
                 }
-            }).done(function(data) {
+            }).done(function(data){
                 $('#contenidos').html(data);
             });
         }
@@ -113,10 +114,12 @@
             if(element.categoria != 'FIL Pensamiento' && element.categoria != 'FIL en CUCSH'){
                 document.getElementById('Pensamiento').style.display = 'none';
                 document.getElementById('Libro').style.display = 'block';
+                document.getElementById('presentadores').textContent = element.presentadores;
 
             }else{
                 document.getElementById('Pensamiento').style.display = 'block';
                 document.getElementById('Libro').style.display = 'none';
+                
             }
             document.getElementById('titulo').textContent = element.nombre;
             document.getElementById('organiza').textContent = element.organiza;
@@ -131,7 +134,7 @@
         function no_login() {
             $.alert({
                 title: 'Iniciar sesión',
-                content: 'Para añadir a <b> Mi Agenda </b> debes de iniciar sesión primero <a href="{{route("login")}}" >Registrarme</a>',
+                content: 'Para añadir a <b> Mi Agenda </b> debes de <a href="{{route("login")}}" >Iniciar Sesión</a> primero ',
             });
         }
     </script>
