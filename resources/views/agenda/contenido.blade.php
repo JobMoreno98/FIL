@@ -1,11 +1,11 @@
-<h2 class="text-center">Eventos del día {{ $dia }} de {{ strtoupper($mes) }}</h2>
-<div class="container">
-    <div class="row justify-content-center">
+<h2 class="text-center" data-swipe-ignore="true">Eventos del día <span id="dia">{{ $dia }}</span> de <span id="mes">{{ strtoupper($mes) }} </span></h2>
+<div class="container" data-swipe-ignore="true" >
+    <div class="row justify-content-center" data-swipe-threshold="100">
         @foreach ($eventos as $item)
             <div class="col-sm-4 m-1">
                 <a onclick="modal({{ $item }})" class="text-decoration-none" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    <div class="card mb-3 shadow w-100 h-100">
+                    <div class="card mb-3 shadow-lg w-100 h-100">
                         <div class="row justify-content-center h-100">
                             <div class="col-md-12">
                                 <div class="card-body text-dark ">
@@ -25,8 +25,7 @@
                                         @if (isset($item->miagenda[0]) && $item->miagenda[0]->id_usuario == Auth::user()->id)
                                             <p class="text-end">
                                                 <a href="{{ route('elimninar-agenda', $item->miagenda[0]->id) }}"
-                                                    class="text-end text-danger"><i class="fas fa-plus"></i> Eliminar de
-                                                    la agenda</a>
+                                                    class="text-end text-danger"><i class="fas fa-plus"></i> Eliminar de la agenda</a>
                                             </p>
                                         @else
                                             <p class="text-end">

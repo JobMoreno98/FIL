@@ -12,7 +12,8 @@
                 <tr>
                     <div class="row justify-content-center">
                         @foreach ($fechas as $item)
-                            <td class="col text-center border shadow-sm m-1 p-3" onclick="logKey('{{ $item->fecha }}')">
+                            <td class="col text-center border shadow-sm m-1 p-3" onclick="logKey('{{ $item->fecha }}')"
+                                data-swipe-ignore="true">
                                 @php
                                     $fecha = str_replace('/', '-', $item->fecha);
                                     $newDate = date('d-m-Y', strtotime($fecha));
@@ -27,8 +28,8 @@
         </div>
         <hr>
     </div>
-    <div class="container">
-        <div class="row" id="contenidos">
+    <div class="container" data-swipe-ignore="true">
+        <div class="row" id="contenidos" data-swipe-ignore="true">
 
         </div>
     </div>
@@ -41,7 +42,7 @@
                     <h1 class="modal-title fs-5" id="titulo"></h1>
                 </div>
                 <div class="modal-body">
-                    <div id="Pensamiento" style="display: block">
+                    <div class="Pensamiento" style="display: block">
                         <p class="fs-bold    ">Organiza: <span id="organiza"></span></p>
                         <p>Coordinador: <span id="coordinador"></span></p>
                     </div>
@@ -51,7 +52,7 @@
                     </div>
                     <p>Categoria: <span id="categoria"></span></p>
                     <p>Salón: <span id="salon"></span></p>
-                    <div id="Pensamiento">
+                    <div class="Pensamiento">
                         <p>Participantes
                         <ul id="participantes">
 
@@ -65,13 +66,8 @@
             </div>
         </div>
     </div>
-
-    <div class="row justify-content-center">
-        <div class="col-sm-12 col-md-6">
-        </div>
-    </div>
-
     <script>
+        var fecha_seleccionada = new Date();
         $(document).ready(function() {
             let fecha = "<?php echo $dia_actual; ?>";
             let fechas = @json($fechas);
@@ -83,6 +79,7 @@
         });
 
         function logKey(fecha) {
+            fecha_seleccionada = fecha;
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -94,13 +91,12 @@
                 data: {
                     dia: fecha
                 }
-            }).done(function(data){
+            }).done(function(data) {
                 $('#contenidos').html(data);
             });
         }
 
         function modal(element) {
-            console.log(element);
             if (element.hasOwnProperty('participantes') && element.participantes != null) {
                 let part = element.participantes.split(',');
                 let participantes = document.getElementById('participantes');
@@ -111,30 +107,64 @@
             }
             document.getElementById('autor').textContent = element.autor;
             document.getElementById('categoria').textContent = element.categoria;
-            if(element.categoria != 'FIL Pensamiento' && element.categoria != 'FIL en CUCSH'){
-                document.getElementById('Pensamiento').style.display = 'none';
-                document.getElementById('Libro').style.display = 'block';
-                document.getElementById('presentadores').textContent = element.presentadores;
 
-            }else{
-                document.getElementById('Pensamiento').style.display = 'block';
+            let pensamiento = document.getElementsByClassName('Pensamiento');
+            if (element.categoria == 'Presentación de Libros') {
+
+                for (let index = 0; index < pensamiento.length; index++) {
+                    pensamiento[index].style.display = 'none';
+                }
+                document.getElementById('Libro').style.display = 'block';
+
+            } else {
+
+                for (let index = 0; index < pensamiento.length; index++) {
+                    pensamiento[index].style.display = 'block';
+                }
                 document.getElementById('Libro').style.display = 'none';
-                
+
             }
             document.getElementById('titulo').textContent = element.nombre;
             document.getElementById('organiza').textContent = element.organiza;
             document.getElementById('coordinador').textContent = element.coordinador;
             document.getElementById('salon').textContent = element.salon;
-
-
             document.getElementById('organiza').textContent = element.organiza;
+
         }
-    </script>
-    <script>
+
         function no_login() {
             $.alert({
                 title: 'Iniciar sesión',
-                content: 'Para añadir a <b> Mi Agenda </b> debes de <a href="{{route("login")}}" >Iniciar Sesión</a> primero ',
+                content: 'Para añadir a <b> Mi Agenda </b> debes de <a href="{{ route('login') }}" >Iniciar Sesión</a> primero ',
+            });
+        }
+    </script>
+
+    <script>
+        window.onload = function() {
+            document.addEventListener('swiped-left', function(e) {
+                console.log('derecha - izquerda');
+                console.log(Date(fecha_seleccionada) < Date('2022-12-04'));
+                if (new Date(fecha_seleccionada) < new Date('2022-12-04')) {
+                    console.log('derecha - izquerda')
+                    var fecha = new Date(fecha_seleccionada);
+                    const dias = 2; // Número de días a agregar
+                    fecha.setDate(fecha.getDate() + dias);
+                    logKey(fecha.toLocaleDateString("fr-CA"))
+                    console.log(fecha.toLocaleDateString("fr-CA"));
+                }
+
+            });
+
+            document.addEventListener('swiped-right', function(e) {
+                console.log('izquierda - derecha');
+                console.log(new Date(fecha_seleccionada) + " > " + new Date('2022-11-26'));
+                if (new Date(fecha_seleccionada) > new Date('2022-11-26')) {
+                    var fecha = new Date(fecha_seleccionada);
+                    fecha.setDate(fecha.getDate());
+                    logKey(fecha.toLocaleDateString("fr-CA"))
+                    console.log(fecha.toLocaleDateString("fr-CA"));
+                }
             });
         }
     </script>
