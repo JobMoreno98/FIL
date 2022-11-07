@@ -1,4 +1,4 @@
-<h2 class="text-center" data-swipe-ignore="true">Eventos del día <span id="dia">{{ $dia }}</span> de <span id="mes">{{ strtoupper($mes) }} </span></h2>
+<h2 class="text-center" data-swipe-ignore="true">Eventos del día <span id="dia">{{ $dia }}</span> de <span id="mes">{{ ucfirst($mes) }} </span></h2>
 <div class="container" data-swipe-ignore="true" >
     <div class="row justify-content-center" data-swipe-threshold="100">
         @foreach ($eventos as $item)

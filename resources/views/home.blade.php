@@ -12,8 +12,8 @@
                 <tr>
                     <div class="row justify-content-center">
                         @foreach ($fechas as $item)
-                            <td class="col text-center border shadow-sm m-1 p-3" onclick="logKey('{{ $item->fecha }}')"
-                                data-swipe-ignore="true">
+                            <td class="col text-center border shadow-sm m-1 p-3" id="{{ $item->fecha }}"
+                                onclick="logKey('{{ $item->fecha }}')" data-swipe-ignore="true">
                                 @php
                                     $fecha = str_replace('/', '-', $item->fecha);
                                     $newDate = date('d-m-Y', strtotime($fecha));
@@ -68,6 +68,7 @@
     </div>
     <script>
         var fecha_seleccionada = new Date();
+        var td_anterior;
         $(document).ready(function() {
             let fecha = "<?php echo $dia_actual; ?>";
             let fechas = @json($fechas);
@@ -85,6 +86,17 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+            console.log(td_anterior);
+            if (td_anterior !== undefined) {
+                td_anterior.classList.remove('bg-primary');
+                td_anterior.classList.remove('text-white');
+            }
+
+            let td = document.getElementById(fecha)
+            console.log(td);
+            td.classList.add("bg-primary");
+            td.classList.add("text-white");
+            td_anterior = td;
             $.ajax({
                 url: "{{ route('buscar.dia') }}",
                 method: 'GET',
@@ -93,7 +105,9 @@
                 }
             }).done(function(data) {
                 $('#contenidos').html(data);
+
             });
+
         }
 
         function modal(element) {
