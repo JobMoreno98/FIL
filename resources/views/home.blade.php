@@ -32,6 +32,11 @@
         <div class="row" id="contenidos" data-swipe-ignore="true">
 
         </div>
+        <div class="row" id="fuera_fecha" style="display: none">
+            <div class="col-sm-12">
+                <h4 class="text-center">Te encuentras fuera de los días de FIL favor de seleccionar un día.</h4>
+            </div>
+        </div>
     </div>
 
     <!-- Modal con la informacion-->
@@ -72,11 +77,16 @@
         $(document).ready(function() {
             let fecha = "<?php echo $dia_actual; ?>";
             let fechas = @json($fechas);
+            let flag = 0;
             fechas.forEach(element => {
                 if (element.fecha === fecha) {
                     logKey(fecha);
+                    flag = 1;
                 }
             });
+            if(flag == 0 ){
+                document.getElementById('fuera_fecha').style.display = 'block';
+            }
         });
 
         function logKey(fecha) {
