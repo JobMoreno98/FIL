@@ -91,6 +91,9 @@
 
         function logKey(fecha) {
             fecha_seleccionada = fecha;
+            if(document.getElementById('fuera_fecha').style.display === 'block'){
+                document.getElementById('fuera_fecha').style.display = 'none';
+            }
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
