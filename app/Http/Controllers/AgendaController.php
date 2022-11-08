@@ -69,6 +69,7 @@ class AgendaController extends Controller
     public function eventos_dia(Request $request)
     {
         if ($request->ajax()){
+            date_default_timezone_set('America/Mexico_City');
             setlocale(LC_TIME, 'es_MX.utf8');
             $anio = date('Y');
             $eventos = Eventos::with('miagenda')->where('anio',$anio)->where('fecha',$request->dia)->orderBy('hora_inicio')->get();
@@ -76,7 +77,8 @@ class AgendaController extends Controller
             $newDate = date('d-m-Y', strtotime($fecha));            
             $dia = strftime('%d', strtotime($newDate));
             $mes = strftime('%B', strtotime($newDate));
-            return view('agenda.contenido',compact('dia','mes','eventos'))->render();
+            $semana = strftime('%A', strtotime($newDate));
+            return view('agenda.contenido',compact('semana','dia','mes','eventos'))->render();
         }
     }
 

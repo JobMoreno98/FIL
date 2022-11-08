@@ -1,5 +1,6 @@
-<h2 class="text-center" data-swipe-ignore="true">Eventos del día <span id="dia">{{ $dia }}</span> de <span id="mes">{{ ucfirst($mes) }} </span></h2>
-<div class="container" data-swipe-ignore="true" >
+<h2 class="text-center" data-swipe-ignore="true">Eventos del día {{ $semana }} <span
+        id="dia">{{ $dia }}</span> de <span id="mes">{{ ucfirst($mes) }} </span></h2>
+<div class="container" data-swipe-ignore="true">
     <div class="row justify-content-center" data-swipe-threshold="100">
         @foreach ($eventos as $item)
             <div class="col-sm-4 m-1">
@@ -25,7 +26,8 @@
                                         @if (isset($item->miagenda[0]) && $item->miagenda[0]->id_usuario == Auth::user()->id)
                                             <p class="text-end">
                                                 <a href="{{ route('elimninar-agenda', $item->miagenda[0]->id) }}"
-                                                    class="text-end text-danger"><i class="fas fa-plus"></i> Eliminar de la agenda</a>
+                                                    class="text-end text-danger"><i class="fas fa-plus"></i> Eliminar de
+                                                    la agenda</a>
                                             </p>
                                         @else
                                             <p class="text-end">
