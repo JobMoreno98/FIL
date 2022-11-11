@@ -6,19 +6,27 @@
         @foreach ($eventos as $item)
             <div class="col-sm-12">
                 <div class="row">
-                    <div class="card mb-3 shadow-lg w-100 h-100" onclick="modal({{ $item }})"
-                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <div class="card mb-3 shadow-lg w-100 h-100" >
                         <div class="row justify-content-center h-100">
-                            <div class="col-md-6 ">
-                                <div class="card-body text-dark ">
+                            @if ($item->created_at != $item->updated_at && $item->updated_at->format('Y-m-d') <= $item->fecha)
+                                <div class="col-sm-12 mt-1">
+                                    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                                        <strong >El evento ha sido actualizado</strong>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                      </div>
+                                </div>
+                            @endif
+                            <div class="col-md-8 ">
+                                <div class="card-body text-dark " onclick="modal({{ $item }})"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     <h5 class="card-title"></h5>
                                     <p class="card-text text-start fs-5">{{ $item->nombre }}</p>
                                     <p class="card-text text-dark">
                                         <b>Salón:</b> {{ $item->salon }} <br>
                                         <b>Categoria :</b> {{ $item->categoria }}
-                                        @if (Auth::check() && $item->coordinador != NULL)
+                                        @if (Auth::check() && $item->coordinador != null)
                                             <span class="d-none d-md-block">
-                                                <b>Coordinadores:  </b> {{ $item->coordinador }}
+                                                <b>Coordinadores: </b> {{ $item->coordinador }}
                                                 <b>Contacto: </b> {{ $item->contacto }}
                                             </span>
                                         @endif

@@ -172,7 +172,7 @@
                 content: 'Para añadir a <b> Mi Agenda </b> debes de <a href="{{ route('login') }}" >Iniciar Sesión</a> primero ',
             });
         }
-    </script>Ñ
+    </script>
 
     <script>
         window.onload = function() {
