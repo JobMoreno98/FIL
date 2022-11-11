@@ -46,6 +46,7 @@ class EventosController extends Controller
 
         $evento->anio = date('Y');
         $evento->nombre = $request->nombre;
+        $evento->contacto = $request->contacto;
         $evento->categoria = $request->categoria;
         $evento->participantes = $request->participantes;
         $evento->autor = $request->autor;

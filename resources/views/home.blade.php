@@ -49,7 +49,11 @@
                 <div class="modal-body">
                     <div class="Pensamiento" style="display: block">
                         <p class="fs-bold    ">Organiza: <span id="organiza"></span></p>
-                        <p>Coordinador: <span id="coordinador"></span></p>
+                        <p>Coordinador: <span id="coordinador"></span>
+                            @if (Auth::check())
+                                Contacto: <span id="contacto_coordinador"></span>
+                            @endif
+                        </p>
                     </div>
                     <div id="Libro" style="display: block">
                         <p>Autor: <span id="autor"></span></p>
@@ -84,14 +88,14 @@
                     flag = 1;
                 }
             });
-            if(flag == 0 ){
+            if (flag == 0) {
                 document.getElementById('fuera_fecha').style.display = 'block';
             }
         });
 
         function logKey(fecha) {
             fecha_seleccionada = fecha;
-            if(document.getElementById('fuera_fecha').style.display === 'block'){
+            if (document.getElementById('fuera_fecha').style.display === 'block') {
                 document.getElementById('fuera_fecha').style.display = 'none';
             }
             $.ajaxSetup({
@@ -99,14 +103,12 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            console.log(td_anterior);
             if (td_anterior !== undefined) {
                 td_anterior.classList.remove('bg-primary');
                 td_anterior.classList.remove('text-white');
             }
 
             let td = document.getElementById(fecha)
-            console.log(td);
             td.classList.add("bg-primary");
             td.classList.add("text-white");
             td_anterior = td;
@@ -151,6 +153,11 @@
                 document.getElementById('Libro').style.display = 'none';
 
             }
+            let login = "{{ Auth::check() }}";
+            if(login != ''){
+                document.getElementById('contacto_coordinador').textContent = element.contacto;
+            }
+            console.log(login);
             document.getElementById('titulo').textContent = element.nombre;
             document.getElementById('organiza').textContent = element.organiza;
             document.getElementById('coordinador').textContent = element.coordinador;
@@ -165,7 +172,7 @@
                 content: 'Para añadir a <b> Mi Agenda </b> debes de <a href="{{ route('login') }}" >Iniciar Sesión</a> primero ',
             });
         }
-    </script>
+    </script>Ñ
 
     <script>
         window.onload = function() {

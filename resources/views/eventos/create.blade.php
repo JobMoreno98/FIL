@@ -24,6 +24,18 @@
                                 value="{{ old('nombre') }}">
                         </div>
                         <div class="col-sm-12 col-md-7">
+                            <div class="row justify-content-around">
+                                <div class="col-md-8">
+                                    <label class="form-label" for="coordinadores">Coordinadores</label>
+                                    <textarea class="form-control" placeholder="Coordinadores" name="coordinadores" id="coordinadores">{{ old('coordinadores') }}</textarea>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="contacto" class="form-label">Contacto Coordinador</label>
+                                    <input type="text" name="contacto" id="contacto" class="form-control" placeholder="Contacto" value="{{old('contacto')}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-7">
                             <label class="form-label" for="participantes">Participantes</label>
                             <textarea class="form-control" placeholder="Participantes" name="participantes" id="descripcion">{{ old('participantes') }}</textarea>
                         </div>
@@ -35,10 +47,7 @@
                             <label class="form-label" for="presentadores">Presentadores</label>
                             <textarea class="form-control" placeholder="Presentadores" name="presentadores" id="presentadores">{{ old('presentadores') }}</textarea>
                         </div>
-                        <div class="col-sm-12 col-md-7">
-                            <label class="form-label" for="coordinadores">Coordinadores</label>
-                            <textarea class="form-control" placeholder="Coordinadores" name="coordinadores" id="coordinadores">{{ old('coordinadores') }}</textarea>
-                        </div>
+
                         <div class="col-sm-12 col-md-7">
                             <label for="categoria" class="form-label">Selecciona una categoria</label>
                             <select class="form-control" name="categoria" id="categoria">
@@ -52,24 +61,26 @@
                     <div class="row justify-content-center">
                         <div class="col-sm-12 col-md-7">
                             <label class="form-label" for="organiza">Organiza</label>
-                            <input class="form-control" type="text" name="organiza" id="organiza" value="{{old('organiza')}}">
+                            <input class="form-control" type="text" name="organiza" id="organiza"
+                                value="{{ old('organiza') }}">
                         </div>
                         <div class="col-sm-12 col-md-7">
                             <label class="form-label" for="area">Salón</label>
-                            <input class="form-control" type="text" name="area" id="area" value="{{old('area')}}"> 
+                            <input class="form-control" type="text" name="area" id="area"
+                                value="{{ old('area') }}">
                         </div>
 
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-sm-12 col-md-3">
                             <label class="form-label" for="hora_inicio">Hora Inicio</label>
-                            <input type="time" class="form-control" id="hora_inicio" name="hora_inicio" 
-                                 required value="{{old('hora_inicio')}}">
+                            <input type="time" class="form-control" id="hora_inicio" name="hora_inicio" required
+                                value="{{ old('hora_inicio') }}">
                         </div>
                         <div class="col-sm-12 col-md-3">
                             <label class="form-label" for="hora_fin">Hora Fin</label>
-                            <input type="time" class="form-control" id="hora_fin" name="hora_fin"
-                                 required value="{{old('hora_fin')}}">
+                            <input type="time" class="form-control" id="hora_fin" name="hora_fin" required
+                                value="{{ old('hora_fin') }}">
                         </div>
                         <div class="col-sm-12 col-md-3">
                             <label class="form-label" for="">Fecha</label>
